@@ -21,15 +21,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id.muhamadridwan.reststarter.repository;
+package com.organization.projectname.repository;
 
-import id.muhamadridwan.reststarter.models.Authority;
+import com.organization.projectname.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Muhamad Ridwan <me@muhamadridwan.id>
  */
-public interface AuthorityRepository extends JpaRepository<Authority, Long>{
-    Authority findByName(String name);
+public interface UserRepository extends JpaRepository<User, Long>{
+    User findByUsername(String username);
 }

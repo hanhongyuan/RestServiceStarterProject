@@ -21,45 +21,43 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id.muhamadridwan.reststarter.models;
+package com.organization.projectname.request;
 
-import javax.persistence.*;
-import org.springframework.security.core.GrantedAuthority;
+import java.io.Serializable;
 
 /**
  *
  * @author Muhamad Ridwan <me@muhamadridwan.id>
  */
-@Entity
-public class Authority  implements GrantedAuthority{
+public class  AuthenticationRequest implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
-    private String name;
+    private static final long serialVersionUID = -8445943548965154778L;
 
-    public Authority() {
+    private String username;
+    private String password;
+
+    public AuthenticationRequest() {
+        super();
     }
 
-    public Authority(String name) {
-        this.name = name;
+    public AuthenticationRequest(String username, String password) {
+        this.setUsername(username);
+        this.setPassword(password);
     }
 
-    public Long getId() {
-        return id;
+    public String getUsername() {
+        return this.username;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getPassword() {
+        return this.password;
     }
 
-    @Override
-    public String getAuthority() {
-        return name;
+    public void setPassword(String password) {
+        this.password = password;
     }
-    
 }

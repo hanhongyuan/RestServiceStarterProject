@@ -13,7 +13,7 @@
     <licenses>
         <license>
             <name>MIT license</name>
-            <url>https://raw.githubusercontent.com/szerhusenBC/jwt-spring-security-demo/master/LICENSE</url>
+            <url>https://opensource.org/licenses/MIT</url>
         </license>
     </licenses>
 
@@ -21,7 +21,7 @@
         <developer>
             <name>Muhamad Ridwan</name>
             <email>me@muhamadridwan.id</email>
-            <url>https://muhamadridwan.id</url>
+            <url>https://github.com/muhamadridwanid/RestServiceStarterProject</url>
         </developer>
     </developers>
     

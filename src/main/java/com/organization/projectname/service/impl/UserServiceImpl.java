@@ -21,13 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id.muhamadridwan.reststarter.service.impl;
+package com.organization.projectname.service.impl;
 
-import id.muhamadridwan.reststarter.models.Authority;
-import id.muhamadridwan.reststarter.models.User;
-import id.muhamadridwan.reststarter.repository.AuthorityRepository;
-import id.muhamadridwan.reststarter.repository.UserRepository;
-import id.muhamadridwan.reststarter.service.UserService;
+import com.organization.projectname.models.Authority;
+import com.organization.projectname.models.User;
+import com.organization.projectname.repository.AuthorityRepository;
+import com.organization.projectname.repository.UserRepository;
+import com.organization.projectname.service.UserService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;

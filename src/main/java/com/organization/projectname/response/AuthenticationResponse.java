@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id.muhamadridwan.reststarter.request;
+package com.organization.projectname.response;
 
 import java.io.Serializable;
 
@@ -29,35 +29,17 @@ import java.io.Serializable;
  *
  * @author Muhamad Ridwan <me@muhamadridwan.id>
  */
-public class  AuthenticationRequest implements Serializable {
+public class AuthenticationResponse implements Serializable {
 
-    private static final long serialVersionUID = -8445943548965154778L;
+    private static final long serialVersionUID = 1250166508152483573L;
 
-    private String username;
-    private String password;
+    private final String token;
 
-    public AuthenticationRequest() {
-        super();
+    public AuthenticationResponse(String token) {
+        this.token = token;
     }
 
-    public AuthenticationRequest(String username, String password) {
-        this.setUsername(username);
-        this.setPassword(password);
-    }
-
-    public String getUsername() {
-        return this.username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public String getToken() {
+        return this.token;
     }
 }

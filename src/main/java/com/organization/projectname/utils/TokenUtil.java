@@ -21,9 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id.muhamadridwan.reststarter.utils;
+package com.organization.projectname.utils;
 
-import id.muhamadridwan.reststarter.models.User;
+import com.organization.projectname.models.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

@@ -21,10 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id.muhamadridwan.reststarter.service;
+package com.organization.projectname.service;
 
-import id.muhamadridwan.reststarter.models.Authority;
-import id.muhamadridwan.reststarter.models.User;
+import com.organization.projectname.models.Authority;
+import com.organization.projectname.models.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**

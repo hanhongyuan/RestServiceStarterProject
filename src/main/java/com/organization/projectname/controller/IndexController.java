@@ -21,25 +21,46 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id.muhamadridwan.reststarter.response;
+package com.organization.projectname.controller;
 
-import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author Muhamad Ridwan <me@muhamadridwan.id>
  */
-public class AuthenticationResponse implements Serializable {
+@RestController
+public class IndexController {
 
-    private static final long serialVersionUID = 1250166508152483573L;
-
-    private final String token;
-
-    public AuthenticationResponse(String token) {
-        this.token = token;
+    
+    //do not require authorization
+    @GetMapping(value = {"/", "${base_path}"})
+    public Map index() {
+        Map map = new HashMap<>();
+        map.put("status", "OK");
+        map.put("message", "Hello world");
+        return map;
     }
 
-    public String getToken() {
-        return this.token;
-    }
+    //require authorization
+    @GetMapping(value = {"${base_path}/user"})
+    public Map user() {
+        Map map = new HashMap<>();
+        map.put("status", "OK");
+        map.put("message", "Hello USER");
+        return map;
+    }    
+
+    //require authorization Admin Role
+    @GetMapping(value = {"${base_path}/admin"})
+    public Map admin() {
+        Map map = new HashMap<>();
+        map.put("status", "OK");
+        map.put("message", "Hello ADMIN");
+        return map;
+    }    
+    
 }

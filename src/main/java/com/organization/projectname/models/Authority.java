@@ -21,26 +21,45 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id.muhamadridwan.reststarter.controller;
+package com.organization.projectname.models;
 
-import java.util.HashMap;
-import java.util.Map;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import javax.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
 
 /**
  *
  * @author Muhamad Ridwan <me@muhamadridwan.id>
  */
-@RestController
-public class IndexController {
+@Entity
+public class Authority  implements GrantedAuthority{
 
-    @GetMapping(value = {"/", "${base_path}"})
-    public Map index() {
-        Map map = new HashMap<>();
-        map.put("status", "OK");
-        map.put("message", "Hello dunia");
-        return map;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
+    private String name;
+
+    public Authority() {
     }
 
+    public Authority(String name) {
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String getAuthority() {
+        return name;
+    }
+    
 }

@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id.muhamadridwan.reststarter;
+package com.organization.projectname;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,9 +31,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author Muhamad Ridwan <me@muhamadridwan.id>
  */
 @SpringBootApplication
-public class DemoApplication {
+public class RestStarter {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(RestStarter.class, args);
     }
 }

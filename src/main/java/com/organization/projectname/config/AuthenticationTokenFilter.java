@@ -21,9 +21,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id.muhamadridwan.reststarter.config;
+package com.organization.projectname.config;
 
-import id.muhamadridwan.reststarter.utils.TokenUtil;
+import com.organization.projectname.utils.TokenUtil;
 import java.io.IOException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;

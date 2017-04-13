@@ -21,11 +21,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id.muhamadridwan.reststarter.bootload;
+package com.organization.projectname.bootload;
 
-import id.muhamadridwan.reststarter.models.Authority;
-import id.muhamadridwan.reststarter.models.User;
-import id.muhamadridwan.reststarter.service.UserService;
+import com.organization.projectname.models.Authority;
+import com.organization.projectname.models.User;
+import com.organization.projectname.service.UserService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.commons.logging.Log;

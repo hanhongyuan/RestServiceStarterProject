@@ -21,12 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package id.muhamadridwan.reststarter.controller;
+package com.organization.projectname.controller;
 
-import id.muhamadridwan.reststarter.models.User;
-import id.muhamadridwan.reststarter.request.AuthenticationRequest;
-import id.muhamadridwan.reststarter.response.AuthenticationResponse;
-import id.muhamadridwan.reststarter.utils.TokenUtil;
+import com.organization.projectname.models.User;
+import com.organization.projectname.request.AuthenticationRequest;
+import com.organization.projectname.response.AuthenticationResponse;
+import com.organization.projectname.utils.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
