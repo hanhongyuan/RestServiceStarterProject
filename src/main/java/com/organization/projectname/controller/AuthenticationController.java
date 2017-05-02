@@ -26,6 +26,7 @@ package com.organization.projectname.controller;
 import com.organization.projectname.models.User;
 import com.organization.projectname.request.AuthenticationRequest;
 import com.organization.projectname.response.AuthenticationResponse;
+import com.organization.projectname.service.UserService;
 import com.organization.projectname.utils.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,7 +43,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -63,10 +63,12 @@ public class AuthenticationController {
     private TokenUtil jwtTokenUtil;
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserService userService;
 
     @RequestMapping(value = "${jwt.route.authentication.path}", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest, Device device) throws AuthenticationException, Exception {
+
+        userService.isIPOK();
 
         // Perform the security
         final Authentication authentication = authenticationManager.authenticate(
@@ -74,26 +76,27 @@ public class AuthenticationController {
                         authenticationRequest.getUsername(),
                         authenticationRequest.getPassword()
                 )
-                
         );
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         // Reload password post-security so we can generate token
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-        
-                
+        final UserDetails userDetails = userService.loadUserByUsername(authenticationRequest.getUsername());
+
         final String token = jwtTokenUtil.generateToken(userDetails, device);
-        
+
         // Return the token
         return ResponseEntity.ok(new AuthenticationResponse(token));
     }
 
     @RequestMapping(value = "${jwt.route.authentication.refresh}", method = RequestMethod.GET)
-    public ResponseEntity<?> refreshAndGetAuthenticationToken(HttpServletRequest request) {
+    public ResponseEntity<?> refreshAndGetAuthenticationToken(HttpServletRequest request) throws Exception {
+        
+        userService.isIPOK();
+        
         String token = request.getHeader(tokenHeader);
         String username = jwtTokenUtil.getUsernameFromToken(token);
-        User user =  (User) userDetailsService.loadUserByUsername(username);
+        User user = (User) userService.loadUserByUsername(username);
 
         if (jwtTokenUtil.canTokenBeRefreshed(token, user.getLastPasswordResetDate())) {
             String refreshedToken = jwtTokenUtil.refreshToken(token);

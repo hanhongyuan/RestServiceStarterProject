@@ -23,7 +23,9 @@
  */
 package com.organization.projectname.service;
 
+import com.organization.projectname.exception.IPBlockedException;
 import com.organization.projectname.models.Authority;
+import com.organization.projectname.models.IPWhitelist;
 import com.organization.projectname.models.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -34,4 +36,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public interface UserService extends UserDetailsService{
     void addAuthority(Authority authority) throws Exception;
     void addUser(User user) throws Exception;
+    void addIpWhiteList(IPWhitelist iPWhitelist) throws Exception;
+    void isIPOK() throws Exception;
 }

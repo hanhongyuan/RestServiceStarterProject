@@ -39,7 +39,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
- *
  * @author Muhamad Ridwan <me@muhamadridwan.id>
  */
 @SuppressWarnings("SpringJavaAutowiringInspection")
@@ -62,7 +61,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public PasswordEncoder
+    passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

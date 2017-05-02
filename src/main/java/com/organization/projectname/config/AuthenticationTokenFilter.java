@@ -23,6 +23,8 @@
  */
 package com.organization.projectname.config;
 
+import com.organization.projectname.models.IPWhitelist;
+import com.organization.projectname.repository.IPWhitelistRepository;
 import com.organization.projectname.utils.TokenUtil;
 import java.io.IOException;
 import javax.servlet.FilterChain;
@@ -58,6 +60,9 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
     @Value("${jwt.header}")
     private String tokenHeader;
 
+    @Autowired
+    private IPWhitelistRepository iPWhitelistRepository;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
         String authToken = request.getHeader(this.tokenHeader);
@@ -65,9 +70,15 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
         // String authToken = header.substring(7);
         String username = jwtTokenUtil.getUsernameFromToken(authToken);
 
-        log.info("checking authentication for user " + username);
+        String ip = SecurityUtil.getClientIP(request);
+
+        log.info("checking authentication for user " + username + " and IP " + ip);
+
+        IPWhitelist iPWhitelist = iPWhitelistRepository.findByIpAddr(ip);
         
-        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+        System.out.println(iPWhitelist);
+
+        if (iPWhitelist != null && username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
             // It is not compelling necessary to load the use details from the database. You could also store the information
             // in the token and read it from it. It's up to you ;)
@@ -85,4 +96,5 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
 
         chain.doFilter(request, response);
     }
+
 }

@@ -19,6 +19,7 @@ jwt:
 
 base_path : /api/v1
 
+
 #logging:
 #  level:
 #    org.springframework:

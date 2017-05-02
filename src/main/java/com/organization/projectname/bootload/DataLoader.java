@@ -24,6 +24,7 @@
 package com.organization.projectname.bootload;
 
 import com.organization.projectname.models.Authority;
+import com.organization.projectname.models.IPWhitelist;
 import com.organization.projectname.models.User;
 import com.organization.projectname.service.UserService;
 import java.util.logging.Level;
@@ -59,12 +60,17 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
         
         User testUser = new User("test", "testFirstname", "testLastName", "test@gmail.com");
         testUser.setAuthority(roleUser);
+        
+        IPWhitelist ipw = new IPWhitelist();
+        ipw.setIpAddr("127.0.0.1");
+        
 
         try {
             userService.addAuthority(roleAdmin);
             userService.addAuthority(roleUser);
             userService.addUser(adminUser);
             userService.addUser(testUser);
+            userService.addIpWhiteList(ipw);
         } catch (Exception ex) {
             Logger.getLogger(DataLoader.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -1,4 +1,4 @@
-/* 
+/*
  * The MIT License
  *
  * Copyright 2017 Muhamad Ridwan - muhamadridwan.id.
@@ -21,31 +21,55 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.organization.projectname.config;
+package com.organization.projectname.models;
 
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.web.AuthenticationEntryPoint;
-import org.springframework.stereotype.Component;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
+ *
  * @author Muhamad Ridwan <me@muhamadridwan.id>
  */
-@Component
-public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint, Serializable {
+@Entity(name = "ip_whitelist")
+public class IPWhitelist implements Serializable{
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String ipAddr;
+    private String description;
 
-    private static final long serialVersionUID = -8970718410437077606L;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getIpAddr() {
+        return ipAddr;
+    }
+
+    public void setIpAddr(String ipAddr) {
+        this.ipAddr = ipAddr;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     @Override
-    public void commence(HttpServletRequest request,
-                         HttpServletResponse response,
-                         AuthenticationException authException) throws IOException {
-        // This is invoked when user tries to access a secured REST resource without supplying any credentials
-        // We should just send a 401 Unauthorized response because there is no 'login page' to redirect to
-        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+    public String toString() {
+        return "IPWhitelist{" + "id=" + id + ", ipAddr=" + ipAddr + ", description=" + description + '}';
     }
+    
+    
 }
